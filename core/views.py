@@ -112,9 +112,13 @@ def signin(request):
 def check(request):
     if request.method == "POST":
         comment = request.POST.get("comment")
+        if comment == '':
+            return render(request, 'index.html', {'res':"Please enter a text"})
+
         res = predict_spam(comment)[0]
         res = 'Spam' if res else 'Not Spam'
-    return render(request, 'index.html', {'res':res})
+        return render(request, 'index.html', {'res':res})
+    return render(request, 'index.html')
 
 # def delete_comment(request, pk):
 #     comment = get_object_or_404(Comment, pk=pk)

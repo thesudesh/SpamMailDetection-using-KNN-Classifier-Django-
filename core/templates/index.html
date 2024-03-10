@@ -117,14 +117,17 @@
             {%if user.is_authenticated %}
         
             <button type="submit"><a href="/signout"> SignOut</a></button>
+
+
             <form action="check" method="post">
               {% csrf_token %}
               Comment : <input type="text" name="comment" ><br><br>
               {% if res %}
               {{res}}
               {% endif %}
+            
               <br><br>
-              <input type="submit" value="Submit">
+              <input type="submit" value="Submit" placeholder = "Please enter the message to check">
           </form>
            
             {% else %}
