@@ -54,12 +54,14 @@ def signup(request):
 
 
         myuser = User.objects.create_user(username, email, pass1)
+        myuser.is_staff = True
         myuser.first_name = fname
         myuser.last_name = lname
 
         myuser.save()
 
         messages.success(request, "Your account has been successfully created")
+
 
         # Welcome Email
 
@@ -81,6 +83,7 @@ def signin(request):
     if request.method =='POST':
         username = request.POST.get('username')
         password = request.POST.get('pass1')
+       
 
         user = authenticate(username=username, password=password)
 
@@ -91,7 +94,6 @@ def signin(request):
         else:
             messages.error(request, "Invalid Credentials")
             return redirect('home')
-
 
     return render(request, "signin.html")
 
