@@ -23,7 +23,7 @@ def preprocess(text):
 
 def predict_spam(text):
     #process each "document"( i.e. each comment)
-    processed = [preprocess(t) for t in text]
+    processed =[preprocess(text)] 
 
     #create vectors
     vectors = tfidf.transform(processed)
