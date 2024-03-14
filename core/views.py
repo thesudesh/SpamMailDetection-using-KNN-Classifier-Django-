@@ -1,5 +1,9 @@
-
+from django.shortcuts import render, get_object_or_404
+# from core.models import Comment
 from core.spam_model import predict_spam 
+from django.http import HttpResponse
+
+##added
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib import messages
